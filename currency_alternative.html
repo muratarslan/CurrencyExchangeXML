@@ -1,0 +1,39 @@
+<html>
+	<body>
+	<h3>KKTC Merkez Bank Daily Currency Exchange Rates</h1>
+
+
+		<script>
+ 		if (window.XMLHttpRequest)
+   		{// code for IE7+, Firefox, Chrome, Opera, Safari
+  		 xmlhttp=new XMLHttpRequest();   }
+ 		else
+   		{// code for IE6, IE5
+ 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");   }
+
+ 		xmlhttp.open("GET","currency.xml",false);
+ 		xmlhttp.send();
+ 		xmlDoc=xmlhttp.responseXML;
+
+		var symbolsOfInterest = ["USD", "EUR", "GBP"];
+
+		function getExchangeSellRateOf(symbol, domInstance) {
+			return domInstance.evaluate("/KKTCMB_Doviz_Kurlari/Resmi_Kurlar[1]/Resmi_Kur[Sembol='"+ symbol + "']/Doviz_Satis", domInstance, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0);
+		}
+
+		function getExchangeBuyRateOf(symbol, domInstance) {
+			return domInstance.evaluate("/KKTCMB_Doviz_Kurlari/Resmi_Kurlar[1]/Resmi_Kur[Sembol='"+ symbol + "']/Doviz_Alis", domInstance, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0);
+		}
+
+
+		for (item of symbolsOfInterest) {
+			document.write(item + " " + "Buy : " + getExchangeBuyRateOf(item, xmlDoc).innerHTML + "<br>");
+			document.write(item + " " + "Sell : " + getExchangeSellRateOf(item, xmlDoc).innerHTML + "<br>" + "<br>");
+		}
+
+
+
+		</script>
+
+	</body>
+</html>

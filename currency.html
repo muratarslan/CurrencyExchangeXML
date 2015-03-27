@@ -1,0 +1,77 @@
+<html>
+<body>
+<h1>KKTC Merkez Bank Daily Currency Exchange Rates</h1>
+
+<div>
+<b>Sembol:</b><span id="dolarSembol"></span><br />
+<b>Isim:</b><span id="dolarIsim"></span><br />
+<b>Alis:</b><span id="dolarAlis"></span><br />
+<b>Satis:</b><span id="dolarSatis"></span>
+</div>
+
+<br />
+
+<div>
+<b>Sembol:</b><span id="euroSembol"></span><br />
+<b>Isim:</b><span id="euroIsim"></span><br />
+<b>Alis:</b><span id="euroAlis"></span><br />
+<b>Satis:</b><span id="euroSatis"></span>
+</div>
+
+<br />
+
+<div>
+<b>Sembol:</b><span id="sterlinSembol"></span><br />
+<b>Isim:</b><span id="sterlinIsim"></span><br />
+<b>Alis:</b><span id="sterlinAlis"></span><br />
+<b>Satis:</b><span id="sterlinSatis"></span>
+</div>
+
+
+<script>
+ if (window.XMLHttpRequest)
+   {// code for IE7+, Firefox, Chrome, Opera, Safari
+   xmlhttp=new XMLHttpRequest();   }
+ else
+   {// code for IE6, IE5
+ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");   }
+
+ xmlhttp.open("GET","currency.xml",false);
+ xmlhttp.send();
+ xmlDoc=xmlhttp.responseXML;
+
+
+// Dolar
+ document.getElementById("dolarSembol").innerHTML=
+ xmlDoc.getElementsByTagName("Sembol")[0].childNodes[0].nodeValue;
+ document.getElementById("dolarIsim").innerHTML=
+ xmlDoc.getElementsByTagName("Isim")[0].childNodes[0].nodeValue;
+ document.getElementById("dolarAlis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Alis")[0].childNodes[0].nodeValue;
+ document.getElementById("dolarSatis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Satis")[0].childNodes[0].nodeValue;
+
+// Euro
+ document.getElementById("euroSembol").innerHTML=
+ xmlDoc.getElementsByTagName("Sembol")[3].childNodes[0].nodeValue;
+ document.getElementById("euroIsim").innerHTML=
+ xmlDoc.getElementsByTagName("Isim")[3].childNodes[0].nodeValue;
+ document.getElementById("euroAlis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Alis")[3].childNodes[0].nodeValue;
+ document.getElementById("euroSatis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Satis")[3].childNodes[0].nodeValue;
+
+//Sterlin
+ document.getElementById("sterlinSembol").innerHTML=
+ xmlDoc.getElementsByTagName("Sembol")[4].childNodes[0].nodeValue;
+ document.getElementById("sterlinIsim").innerHTML=
+ xmlDoc.getElementsByTagName("Isim")[4].childNodes[0].nodeValue;
+ document.getElementById("sterlinAlis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Alis")[4].childNodes[0].nodeValue;
+ document.getElementById("sterlinSatis").innerHTML=
+ xmlDoc.getElementsByTagName("Doviz_Satis")[4].childNodes[0].nodeValue;
+
+
+</script>
+</body>
+</html>
