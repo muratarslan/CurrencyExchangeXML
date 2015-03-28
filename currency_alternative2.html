@@ -4,10 +4,10 @@
 
 
 		<script>
- 		if (window.XMLHttpRequest){						// code for IE7+, Firefox, Chrome, Opera, Safari
+ 		if (window.XMLHttpRequest){		// code for IE7+, Firefox, Chrome, Opera, Safari
    			xmlhttp=new XMLHttpRequest();   
 		}
- 		else{										// code for IE6, IE5
+ 		else{	// code for IE6, IE5
  			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 
@@ -15,7 +15,7 @@
  		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML;
 
-		var lengthOfChildNodes = xmlDoc.documentElement.childNodes.length;  // Length of Xml child nodes
+		var lengthOfChildNodes = xmlDoc.documentElement.childNodes.length;	  // Length of Xml child nodes
 
 		for (i = 0; i < lengthOfChildNodes; i++) {
 			var symbol =  xmlDoc.getElementsByTagName("Sembol")[i].childNodes[0].nodeValue
