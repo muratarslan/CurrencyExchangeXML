@@ -1,0 +1,32 @@
+<html>
+	<body>
+	<h3>KKTC Merkez Bank Daily Currency Exchange Rates</h3>
+
+
+		<script>
+ 		if (window.XMLHttpRequest){										// code for IE7+, Firefox, Chrome, Opera, Safari
+   			xmlhttp=new XMLHttpRequest();   
+		}
+ 		else{														// code for IE6, IE5
+ 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.open("GET","currency.xml",false);
+ 		xmlhttp.send();
+		xmlDoc=xmlhttp.responseXML;
+
+		var lengthOfChildNodes = xmlDoc.documentElement.childNodes.length;  // Length of Xml child nodes
+
+		for (i = 0; i < lengthOfChildNodes; i++) {
+			var symbol =  xmlDoc.getElementsByTagName("Sembol")[i].childNodes[0].nodeValue
+			if (symbol == "USD" || symbol == "EUR" || symbol == "GBP"){
+				document.write(symbol + " Buy : " + xmlDoc.getElementsByTagName("Doviz_Alis")[i].childNodes[0].nodeValue + "<br>");
+				document.write(symbol + " Sell : " + xmlDoc.getElementsByTagName("Doviz_Satis")[i].childNodes[0].nodeValue + "<br>" +  "<br>");
+			}
+
+		}
+
+
+		</script>
+	</body>
+</html>
